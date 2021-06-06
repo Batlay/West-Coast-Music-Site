@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="lib/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" >
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"/>
+
+	
+	
+	
+ <title>Music site</title>
+    		
+ <style>
+	 #playlist{
+            list-style: none;
+        }
+        #playlist li a{
+            color:black;
+            text-decoration: none;
+        }
+        #playlist .current-song a{
+            color:black;
+        }
+	 img{
+    		height: 200px;
+		 width: 100%;
+    	}
+	 .gif	{
+    		height: 50px;
+		 width: 100px;
+		
+    	}
+	 
+    	.col-md-3{
+    		margin-bottom: 40px;
+    	}
+    	
+	 
+	
+
+	 
+	 .hide
+	 {
+		 color: white;
+	 }
+    	
+
+		/*default is hide music player*/
+#aplayer
+{
+position: fixed;
+bottom: -100%;
+left: 0;
+width: 100%;
+margin: 0;
+box-shadow: 0 -2px 2px #dadada;
+background-image: url(img/ba.jpg);
+transition: all ease 0.5s;
+}
+#aplayer.showPlayer
+ {
+bottom: 0;
+}	 
+	
+#aplayer.hidePlayer
+{
+top: 0;
+}
+
+ 	#oplayer
+	{
+	position: fixed;
+	bottom: -100%;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	box-shadow: 0 -2px 2px #dadada;
+	background-image: url(img/ba.jpg);
+	transition: all ease 0.5s;
+	}
+	 
+	#oplayer.showPlayer
+	{
+	bottom: 0;
+	}
+
+		
+	#oplayer.hidePlayer{
+	visibility: hidden;
+	}
+	 
+		#jazzplayer
+	 	{
+		position: fixed;
+		bottom: -100%;
+		left: 0;
+		width: 100%;
+		margin: 0;
+		box-shadow: 0 -2px 2px #dadada;
+		background-image: url(img/ba.jpg);
+		transition: all ease 0.5s;
+		}
+	 
+	 	#jazzplayer.showPlayer
+	 	{
+		bottom: 0;
+		}
+
+		
+	 	#jazzplayer.hidePlayer{
+		visibility: hidden;
+		}
+	 
+			#hhplayer
+	 		{
+			position: fixed;
+			bottom: -100%;
+			left: 0;
+			width: 100%;
+			margin: 0;
+			box-shadow: 0 -2px 2px #dadada;
+			background-image: url(img/ba.jpg);
+			transition: all ease 0.5s;
+			}
+	 
+	 		#hhplayer.showPlayer
+	 		{
+			bottom: 0;
+			}
+		
+	 		#hhplayer.hidePlayer{
+			visibility: hidden;
+			}
+	
+	 			#rockplayer
+	 			{
+				position: fixed;
+				bottom: -100%;
+				left: 0;
+				width: 100%;
+				margin: 0;
+				box-shadow: 0 -2px 2px #dadada;
+				background-image: url(img/ba.jpg);
+				transition: all ease 0.5s;
+				}
+	 
+	 			#rockplayer.showPlayer
+	 			{
+				bottom: 0;
+				}
+	
+	 			#rockplayer.hidePlayer{
+				visibility: hidden;
+				}
+		
+		/*MUSIC PLAYER CUSTOMIZING STYLE*/
+		
+	 span{
+			color: #000 !important;
+			font-size: 16px;
+		}
+		.oplayer .oplayer-info .oplayer-controller .oplayer-bar-wrap .oplayer-bar .oplayer-loaded {
+			background: #e0e0e0;
+    		height: 4px;
+		}
+		.oplayer .oplayer-info .oplayer-controller .oplayer-bar-wrap .oplayer-bar .oplayer-played {
+			height: 4px;
+			background-color: #2196F3 !important;
+		}
+		.oplayer .oplayer-info .oplayer-controller .oplayer-bar-wrap .oplayer-bar .oplayer-played .oplayer-thumb {
+			background-color: #2196F3 !important;
+		}
+
+		.oplayer .oplayer-icon {
+			width: 20px;
+			height: 20px;
+		}
+		.oplayer .oplayer-info .oplayer-controller .oplayer-time .oplayer-icon path  {
+		    fill: #000;
+		}
+		.oplayer .oplayer-info .oplayer-music {
+			margin-bottom: 5px;
+		}
+	 
+	 		.jazzplayer .jazzplayer-info .jazzplayer-controller .jazzplayer-bar-wrap .jazzplayer-bar .jazzplayer-loaded {
+			background: #e0e0e0;
+    		height: 4px;
+		}
+		.jazzplayer .jazzplayer-info .jazzplayer-controller .jazzplayer-bar-wrap .jazzplayer-bar .jazzplayer-played {
+			height: 4px;
+			background-color: #2196F3 !important;
+		}
+		.jazzplayer .jazzplayer-info .jazzplayer-controller .jazzplayer-bar-wrap .jazzplayer-bar .jazzplayer-played .jazzplayer-thumb {
+			background-color: #2196F3 !important;
+		}
+
+		.jazzplayer .jazzplayer-icon {
+			width: 20px;
+			height: 20px;
+		}
+		.jazzplayer .jazzplayer-info .jazzplayer-controller .jazzplayer-time .jazzplayer-icon path  {
+		    fill: #000;
+		}
+		.jazzplayer .jazzplayer-info .jazzplayer-music {
+			margin-bottom: 5px;
+		}
+	 
+	 	 		.hhplayer .hhplayer-info .hhplayer-controller .hhplayer-bar-wrap .hhplayer-bar .hhplayer-loaded {
+			background: #e0e0e0;
+    		height: 4px;
+		}
+		.hhplayer .hhplayer-info .hhplayer-controller .hhplayer-bar-wrap .hhplayer-bar .hhplayer-played {
+			height: 4px;
+			background-color: #2196F3 !important;
+		}
+		.hhplayer .hhplayer-info .hhplayer-controller .hhplayer-bar-wrap .hhplayer-bar .hhplayer-played .hhplayer-thumb {
+			background-color: #2196F3 !important;
+		}
+
+		.hhplayer .hhplayer-icon {
+			width: 20px;
+			height: 20px;
+		}
+		.hhplayer .hhplayer-info .hhplayer-controller .hhplayer-time .hhplayer-icon path  {
+		    fill: #000;
+		}
+		.hhplayer .hhplayer-info .hhplayer-music {
+			margin-bottom: 5px;
+		}
+	 
+	 		.rockplayer .rockplayer-info .rockplayer-controller .rockplayer-bar-wrap .rockplayer-bar .rockplayer-loaded {
+			background: #e0e0e0;
+    		height: 4px;
+		}
+		.rockplayer .rockplayer-info .rockplayer-controller .rockplayer-bar-wrap .rockplayer-bar .rockplayer-played {
+			height: 4px;
+			background-color: #2196F3 !important;
+		}
+		.rockplayer .rockplayer-info .rockplayer-controller .rockplayer-bar-wrap .rockplayer-bar .rockplayer-played .rockplayer-thumb {
+			background-color: #2196F3 !important;
+		}
+
+		.rockplayer .rockplayer-icon {
+			width: 20px;
+			height: 20px;
+		}
+		.rockplayer .rockplayer-info .rockplayer-controller .rockplayer-time .rockplayer-icon path  {
+		    fill: #000;
+		}
+		.rockplayer .rockplayer-info .rockplayer-music {
+			margin-bottom: 5px;
+		}
+	 
+.tabs {
+  border: 1px solid black;
+}
+
+.tabs__nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  background: #f8f8f8;
+  border-bottom: 1px solid black;
+	width: 103%;
+	position: relative;
+	left: -40px;
+	opacity: 50%;
+	border-style: groove;
+	border-color: black;
+	border-width: thin;
+}
+
+.tabs__link {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.tabs__link_active {
+  background: lightgray;
+  cursor: default;
+}
+
+.tabs__link:not(.tabs__link_active):hover,
+.tabs__link:not(.tabs__link_active):focus {
+  background-color: #efefef;
+}
+
+.tabs__content {
+  padding: 1rem;
+}
+
+.tabs__pane {
+  display: none;
+}
+
+.tabs__pane_show {
+  display: block;
+}
+    </style>
+	
+</head>
+<body>
+
+    <div class="site-body">
+        <div class="main">
+            <div class="header" id="header">
+                <button onclick="openBar()" id="open-btn" class="mob-btn"></button>
+                <button onclick="closeBar()" id="close-btn" class="mob-btn"></button>
+				
+                <img src="img/logo.gif" alt="Official logo">
+				  <img src="img/westcoast.png" alt="Official logo" >
+				
+                <div class="nav" id="nav">
+                    <a href="">Home</a>
+                    <a href="https://vk.com/glebati_13">About</a>
+                    <a href="#start" class="scroll blog">Blogs</a>
+                    <a href="#finish" class="scroll bottom">Contact</a>
+                </div>
+             
+            </div>
+            <div class="s2">
+				  
+			</div>
+<div class="tabs">
+<div class="scroll-bg">
+				
+		
+
+<!-- class="search" automagically makes an input a search field. -->
+  
+			 <div id='search-box'>
+				  
+  <input type="text" id='search-input' placeholder='Поиск музыки'>
+	  <ul id='search-list'>	 
+
+<div class="tabs__nav">
+  <a class="tabs__link tabs__link_active" href="#content_1">West Coast Gurus</a>
+  <a class="tabs__link" href="#content_2">Хип-хоп</a>
+  <a class="tabs__link" href="#content_3">Джаз</a>
+  <a class="tabs__link" href="#content_4">Рок</a>
+</div>
+<div class="tabs__content">
+	<div class="scroll-div">
+					<div class="scroll-object">
+
+	  		
+		   <div class="tabs__pane tabs__pane_show" id="content_1">
+     <ul id="playlist">
+		 
+        <li> <a href="javascript:void();" class="west-coast" data-switch="0"><i class="fas fa-drum"></i>
+Maneskin - Torna a casa</a><b>3:50</b></li>
+		 <li><a href="#" class="west-coast" data-switch="1"  ><i class="fas fa-drum"></i> The Killers - Run For Cover</a><b>3:43</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="2"  ><i class="fas fa-drum"></i> 24Goldn ft. DaBaby - Coco</a><b>2:22</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="3"><i class="fas fa-drum"></i> Shawn Mendes, Justin Bieber - Monster</a><b>2:59</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="4" ><i class="fas fa-drum"></i> Alec Benjamin - Oh My God</a><b>3:07</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="5" ><i class="fas fa-drum"></i> Gjon's Tears - Tout l'univers</a><b>3:04</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="6" ><i class="fas fa-drum"></i> The Vamps - Would You</a><b>3:02</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="7" ><i class="fas fa-drum"></i> benny blanco, Halsey, Khaid - Eastside</a><b>2:51</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="8" ><i class="fas fa-drum"></i> Gaho - Start Over</a><b>3:20</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="9" ><i class="fas fa-drum"></i> The Kid LAROI - Without You</a><b>2:41</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="10" ><i class="fas fa-drum"></i> Jony - Комета</a><b>2:41</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="11"><i class="fas fa-drum"></i> Adele - Water Under The Bridge</a><b>4:00</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="12" ><i class="fas fa-drum"></i> New Hope Club - Worse</a><b>3:04</b>
+		 </li>
+		 		 <li><a href="#" class="west-coast" data-switch="13"><i class="fas fa-drum"></i> TIX - Fallen Angel</a><b>2:54</b>
+					 <li><a href="#" class="west-coast" data-switch="14" ><i class="fas fa-drum"></i> Animal Джаz - Чувства</a><b>3:40</b></li>
+		 <li><a href="#" class="west-coast" data-switch="15" ><i class="fas fa-drum"></i> Maneskin - I WANNA BE YOUR SLAVE</a><b>2:53</b></li>
+		 <li><a href="#" class="west-coast" data-switch="16" ><i class="fas fa-drum"></i> Nirvana - School</a><b>2:42</b></li>
+		 <li><a href="#" class="west-coast" data-switch="17" ><i class="fas fa-drum"></i> Мурат Насыров - Мальчик хочет в Тамбов</a><b>3:35</b></li>
+		 <li><a href="#" class="west-coast" data-switch="18" ><i class="fas fa-drum"></i> The Weeknd - Blinding Lights</a><b>3:21</b></li>
+		 <li><a href="#" class="west-coast" data-switch="19" ><i class="fas fa-drum"></i> Marshmello x Jonas Brothers - Leave Before You Love Me</a><b>2:35</b></li>
+		 <li><a href="#" class="west-coast" data-switch="20" ><i class="fas fa-drum"></i> Charlie Puth ft. Selena Gomez - We Don't talk Anymore</a><b>3:37</b></li>
+		 <li><a href="#" class="west-coast" data-switch="21" ><i class="fas fa-drum"></i> BTS - Fake Love</a><b>4:02</b></li>
+		 <li><a href="#" class="west-coast" data-switch="22" ><i class="fas fa-drum"></i> SAINt JHN - Roses (Imanbek Remi)</a><b>2:56</b></li>
+		 <li><a href="#" class="west-coast" data-switch="23" ><i class="fas fa-drum"></i> John Newman - Love Me Again</a><b>3:58</b></li>
+		 		 <li><a href="#" class="west-coast" data-switch="24" ><i class="fas fa-drum"></i> Tom Odell - Another Love</a><b>4:04</b></li>
+		
+		  </ul>  </div>
+		 
+  <div class="tabs__pane" id="content_2">	
+       <ul id="playlist">
+        <li> <a href="javascript:void();" class="hip" data-switch="0"><i class="fas fa-drum"></i>
+21 savage, Metro Boomin - Runnin</a><b>3:15</b></li>
+		 <li><a href="#" class="hip" data-switch="1" ><i class="fas fa-drum"></i> Slava Marlow - Снова я напиваюсь</a><b>1:57</b></li>
+
+		 <li><a href="#" class="hip" data-switch="2" ><i class="fas fa-drum"></i> Slava Marlow - Кому это надо?</a><b>1:42</b></li>
+
+		 <li><a href="#" class="hip" data-switch="3" ><i class="fas fa-drum"></i> Drake, Giveon - Chicago Freestyle</a><b>3:40</b></li>
+		 <li><a href="#" class="hip" data-switch="4" ><i class="fas fa-drum"></i> Travis Scott - Highest in The Room</a><b>2:55</b></li>
+
+		 <li><a href="#" class="hip" data-switch="5" ><i class="fas fa-drum"></i> J.Balvin, Willy William - Mi Gente</a><b>3:07</b></li>
+	      
+		 <li><a href="#" class="hip" data-switch="6" ><i class="fas fa-drum"></i> 2Pac - Hit em Up</a><b>4:12</b></li>
+		 <li><a href="#" class="hip" data-switch="7" ><i class="fas fa-drum"></i> 2Pac - Changes</a><b>4:28</b></li>
+
+		 <li><a href="#" class="hip" data-switch="8" ><i class="fas fa-drum"></i> 2Pac - California Love</a><b>5:48</b></li>
+
+		 <li><a href="#" class="hip" data-switch="9" ><i class="fas fa-drum"></i> Dior - Положение</a><b>2:15</b></li>
+		 <li><a href="#" class="hip" data-switch="10" ><i class="fas fa-drum"></i> Internet Money, Lil Tecca, Lil Mosey - Jetski</a><b>2:45</b></li>
+
+		 <li><a href="#" class="hip" data-switch="11" ><i class="fas fa-drum"></i> Lil Mosey - Try me</a><b>2:21</b></li>
+	      
+		 <li><a href="#" class="hip" data-switch="12" ><i class="fas fa-drum"></i> BTS - Black Swan</a><b>3:18</b></li>
+	   
+	    <li><a href="#" class="hip" data-switch="13" ><i class="fas fa-drum"></i> Slava Marlow - По Глазам</a><b>2:00</b></li>
+	      
+		 <li><a href="#" class="hip" data-switch="14" ><i class="fas fa-drum"></i> Juice WRLD - Robbery</a><b>4:00</b></li>
+			 </ul> </div>
+	 
+				
+  <div class="tabs__pane" id="content_3">
+       <ul id="playlist">
+	
+        <li> <a href="javascript:void();" class="jazz" data-switch="0"><i class="fas fa-drum"></i>
+Paul Desmond - A Tase of Honey</a><b>4:30</b></li>
+		 <li><a href="#" class="jazz" data-switch="1" ><i class="fas fa-drum"></i> Sonny Rollins - Silk'n'Satin</a><b>4:01</b></li>
+
+		 <li><a href="#" class="jazz" data-switch="2" ><i class="fas fa-drum"></i> Gerry Muligan - Chelsea Bridge</a><b>7:17</b></li>
+
+		 <li><a href="#" class="jazz" data-switch="3" ><i class="fas fa-drum"></i> Ben Webster - My Funny Valentine</a><b>3:22</b></li>
+		 <li><a href="#" class="jazz" data-switch="4" ><i class="fas fa-drum"></i> John Coltrane - Like Someone In Love</a><b>4:54</b></li>
+
+		 <li><a href="#" class="jazz" data-switch="5" ><i class="fas fa-drum"></i> Chet Baker - Alone Together</a><b>3:43</b></li>
+	      
+		 <li><a href="#" class="jazz" data-switch="6" ><i class="fas fa-drum"></i> Wes Montgomery - In Your Own Sweet Way</a><b>4:51</b></li>
+		 <li><a href="#" class="jazz" data-switch="7" ><i class="fas fa-drum"></i> Bill Evans - When I Fall in Love</a><b>3:02</b></li>
+
+		 <li><a href="#" class="jazz" data-switch="8" ><i class="fas fa-drum"></i> Charlie Parker - Everything Happens To Me</a><b>3:16</b></li>
+
+		 <li><a href="#" class="jazz" data-switch="9" ><i class="fas fa-drum"></i> Scott Hamilton - Good Morning Heartache</a><b>5:22</b></li>
+		 <li><a href="#" class="jazz" data-switch="10" ><i class="fas fa-drum"></i> Barney Kesse - I'm Thru with Love</a><b>3:18</b></li>
+
+		 <li><a href="#" class="jazz" data-switch="11" ><i class="fas fa-drum"></i> John Cotrane - In A Sentimenta Mood</a><b>4:19</b></li>
+	      
+		 <li><a href="#" class="jazz" data-switch="12" ><i class="fas fa-drum"></i> Stan Getz, The Oscar Peterson Trio - Detour Ahead</a><b>3:36</b></li>
+		  			 </ul> </div>
+	 
+					 
+						 <div class="tabs__pane" id="content_4">
+       <ul id="playlist">
+        <li> <a href="javascript:void();" class="rock" data-switch="0"><i class="fas fa-drum"></i>
+Panic!At The Disco - I Write Sins Not Tragedies</a><b>3:08</b></li>
+		 <li><a href="#" class="rock" data-switch="1" ><i class="fas fa-drum"></i> The Cranberries - Zombie</a><b>5:07</b></li>
+
+		 <li><a href="#" class="rock" data-switch="2" ><i class="fas fa-drum"></i> Aerosmith - Dream On</a><b>4:27</b></li>
+
+		 <li><a href="#" class="rock" data-switch="3" ><i class="fas fa-drum"></i> Oasis - Wonderwall</a><b>4:20</b></li>
+		 <li><a href="#" class="rock" data-switch="4" ><i class="fas fa-drum"></i> David Bowie - Rebel, Rebel </a><b>3:30</b></li>
+
+		 <li><a href="#" class="rock" data-switch="5" ><i class="fas fa-drum"></i> Scorpions - Still Loving You</a><b>6:43</b></li>
+	      
+		 <li><a href="#" class="rock" data-switch="6" ><i class="fas fa-drum"></i> Journey - Don't Stop Believin'</a><b>4:05</b></li>
+		 <li><a href="#" class="rock" data-switch="7" ><i class="fas fa-drum"></i> Ozzy Osbourne - Crazy Train</a><b>4:51</b></li>
+
+		 <li><a href="#" class="rock" data-switch="8" ><i class="fas fa-drum"></i> Europe - The Final Countdown</a><b>5:10</b></li>
+
+		 <li><a href="#" class="rock" data-switch="9" ><i class="fas fa-drum"></i> Toto - Africa</a><b>4:58</b></li>
+		 <li><a href="#" class="rock" data-switch="10" ><i class="fas fa-drum"></i> Green Day - 21 Guns</a><b>5:22</b></li>
+
+		 <li><a href="#" class="rock" data-switch="11" ><i class="fas fa-drum"></i> Nickelback - When We Stand Together</a><b>3:10</b></li>
+	      
+		 <li><a href="#" class="rock" data-switch="12" ><i class="fas fa-drum"></i> Kansas - Carry On Wayward Son</a><b>5:20</b></li>
+	   
+	    <li><a href="#" class="rock" data-switch="13" ><i class="fas fa-drum"></i> Santana - She's Not There</a><b>4:04</b></li>
+	      
+		 <li><a href="#" class="rock" data-switch="14" ><i class="fas fa-drum"></i> Spirit - Mr. Skin</a><b>3:50</b></li>
+							 </ul>		 
+		  </div></div>
+
+	<script src="search.js"></script>
+				 	<script>
+	$('tabs__link').click(function(e) {
+     return false; // prevent default click action from happening!
+     e.preventDefault(); // same thing as above
+		</script>
+				 	<script src="audioPlayer.js"></script>
+				    <script src="tabs.js"></script>
+
+	</div>
+		  </div>	</div>
+</div>
+	</div>
+</div>
+		
+		
+
+			<!--	<div class="scroll-div">
+					<div class="scroll-object">
+    <ul id="playlist">
+        <li> <a href="javascript:void();" class="album-roaster" data-switch="0"><i class="fas fa-drum"></i>
+
+Maneskin - Torna a casa</a></li>
+        <li><a href="#" class="album-roaster" data-switch="1" ><i class="fas fa-drum"></i>
+Egor Creed - Golos</a></li>
+        <li>	<a href="#" class="album-roaster" data-switch="2"><i class="fas fa-drum"></i>
+
+
+Broken Reality</a></li>
+		<li><a href="#" class="album-roaster" data-switch="3" ><i class="fas fa-drum"></i>
+
+Severe Tire Damage</a></li>
+        <li>	<a href="#" class="album-roaster" data-switch="4"><i class="fas fa-drum"></i>
+
+
+Broken Reality</a></li>
+		<li><a href="#" class="album-roaster" data-switch="5" ><i class="fas fa-drum"></i>
+
+Severe Tire Damage</a></li>
+        <li>	<a href="#" class="album-roaster" data-switch="6"><i class="fas fa-drum"></i>
+
+
+Broken Reality</a></li>
+		<li><a href="#" class="album-roaster" data-switch="7" ><i class="fas fa-drum"></i>
+
+Severe Tire Damage</a></li>
+        <li>	<a href="#" class="album-roaster" data-switch="8"><i class="fas fa-drum"></i>
+Broken Reality</a></li>
+		<li><a href="#" class="album-roaster" data-switch="9" ><i class="fas fa-drum"></i>
+Severe Tire Damage</a></li>
+        <li>	<a href="#" class="album-roaster" data-switch="10"><i class="fas fa-drum"></i>
+Broken Reality</a></li>
+				<li><a href="#" class="album-roaster" data-switch="9" ><i class="fas fa-drum"></i>
+Severe Tire Damage</a></li>
+        <li>	<a href="#" class="album-roaster" data-switch="10"><i class="fas fa-drum"></i>
+Broken Reality</a></li>
+    </ul>
+						</div>
+				</div> 
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script src="audioPlayer.js"></script>
+    <script>
+        // loads the audio player
+        audioPlayer();
+    </script>
+
+            </div>
+			
+        </div>  -->
+		
+<div class="b2">
+  
+	<div class="b2vk">
+	<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<div class="group">
+
+
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 3, color3: '000000'}, 27895931);
+</script>
+		
+
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 3, color3: '000000'}, 94023267);
+</script>
+		
+		<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 3, color3: '000000'}, 1680);
+</script>
+</div>
+
+<!-- VK Widget -->
+<div id="vk_playlist_-147845620_8"></div>
+<script type="text/javascript">
+VK.Widgets.Playlist('vk_playlist_-147845620_8', -147845620, 8, '8ffe279e0029054c9f', {width: 500});
+</script>
+		
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+
+<!-- VK Widget -->
+<div id="vk_playlist_-2000977482_2977482"></div>
+<script type="text/javascript">
+VK.Widgets.Playlist('vk_playlist_-2000977482_2977482', -2000977482, 2977482, '503ee8ff34410e5f16', {width: 400});
+</script>
+		<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+
+<!-- VK Widget -->
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+
+<!-- VK Widget -->
+<div id="vk_playlist_-192962919_63"></div>
+<script type="text/javascript">
+VK.Widgets.Playlist('vk_playlist_-192962919_63', -192962919, 63, '70a5071b198f2a4ebe', {width: 400});
+</script>
+<!-- VK Widget -->
+<div id="vk_playlist_-2000309571_6309571"></div>
+<script type="text/javascript">
+VK.Widgets.Playlist('vk_playlist_-2000309571_6309571', -2000309571, 6309571, '2fc0f3f339fff23a6e', {width: 400});
+</script>
+	</div>
+		
+   <div class ="ending">
+	
+    </div>
+</div>
+       
+			
+			
+			
+			
+<div class="b3">
+	 <div class="s3">
+            <h1>Свежие релизы</h1>
+    </div>
+<div class="row">
+	
+	<div class="ccard">
+		<a href="javascript:void();" class="release" data-switch="0">
+			<img src="img/jcole.jpeg" alt ="">
+				</a>
+	<h5>J-Cole - a m a r i </h5>
+	</div>		
+	
+		<div class="ccard">
+		<a href="#" class="release" data-switch="1">
+			<img src="img/ital.jpg" alt="">
+			</a>
+		<h5>Maneskin - Zitti E Buoni</h5>
+		</div>	
+					
+
+	
+			<div class="ccard">
+				<a href="#" class="release" data-switch="2">
+					<img src="img/bts.jpg" alt ="">
+				</a>
+			<h5>BTS - Butter</h5>
+			</div>		
+	
+			
+			<div class="ccard">
+				<a href="#" class="release" data-switch="3">
+					<img src="img/olivia.jpg" alt ="">
+				</a>
+				<h5>Olivia Rodrigo - good 4 u</h5>
+				</div>		
+	
+				
+			<div class="ccard">
+				<a href="#" class="release" data-switch="4">
+					<img src="img/21savage.png" alt ="">
+				</a>
+					<h5>21 Savage - Spiral</h5>
+					</div>	
+							
+						<div class="ccard">
+							<a href="#" class="release" data-switch="5">
+								<img src="img/nf.jpg" alt ="">
+				</a>
+						<h5>NF - LOST</h5>
+						</div>		
+	
+							<div class="ccard">
+							<a href="#" class="release" data-switch="6">
+								<img src="img/lana.jpg" alt ="">
+				</a>
+							<h5>Lana Del Rey - Chemtrails Over The Country Club</h5>
+							</div>		
+	
+								<div class="ccard">
+							<a href="#" class="release" data-switch="7">
+								<img src="img/rocket.jpg" alt ="">
+				</a>
+								<h5>ROCKET - Ego Trippin</h5>
+								</div>		
+	
+								<div class="ccard">
+							<a href="#" class="release" data-switch="8">
+								<img src="img/jackson.jpg" alt ="">
+				</a>
+									<h5>Jackson Wang - Pretty Please</h5>
+									</div>		
+	
+										<div class="ccard">
+							<a href="#" class="release" data-switch="9">
+								<img src="img/ksi.jpg" alt ="">
+				</a>
+										<h5>KSI - Patience</h5>
+										</div>		
+	
+											<div class="ccard">
+							<a href="#" class="release" data-switch="10">
+								<img src="img/21.jpg" alt ="">
+				</a>
+											<h5>Twenty One Pilots - Shy Away</h5>
+											</div>		
+	
+												<div class="ccard">
+							<a href="#" class="release" data-switch="11">
+								<img src="img/lilnas.jpg" alt ="">
+				</a>
+												<h5>Lil Nas X - Montero</h5>
+												</div>		
+	
+													<div class="ccard">
+							<a href="#" class="release" data-switch="12">
+								<img src="img/g.jpg" alt ="">
+				</a>
+													<h5>Galantis, David Guetta - Heartbreak Anthem</h5>
+													</div>		
+	
+														<div class="ccard">
+							<a href="#" class="release" data-switch="13">
+								<img src="img/joy.jpg" alt ="">
+				</a>
+														<h5>Vance Joy - Missing Piece</h5>
+														</div>		
+		
+															<div class="ccard">
+							<a href="#" class="release" data-switch="14">
+								<img src="img/bil.png" alt ="">
+				</a>
+															<h5>Billie Eilish - Your Power</h5>					</div>		
+		</div>
+							</div>		
+	
+		
+	
+		
+
+ 
+
+	<div id="start"></div>
+	<div class="banner">
+		<video id="slider" autoplay muted loop>
+			<source src="img/rock_3.mp4" type="video/mp4">
+	</video>
+		<ul class="navigation">
+			<li onclick="videoUrl('img/rock_3.mp4')"><img src="img/butter.jpg">
+			</li>
+			<li onclick="videoUrl('img/lesgo.mp4')"><img src="img/miami.jpg"> </li>	
+			<li onclick="videoUrl('img/man.mp4')"><img src="img/italy.jpg"> </li>	
+			<li onclick="videoUrl('img/week.mp4')"><img src="img/week.jpg"> </li>	
+			<li onclick="videoUrl('img/m.mp4')"><img src="img/marsh.jpg"> </li>	
+		</ul>
+	</div>
+
+
+<!--<h1>Måneskin win Eurovision Song Contest 2021</h1>
+		<p>Italy’s Måneskin have come out on top in what was one of the most hotly contested Eurovision Song Contests ever.
+
+			Switzerland won the jury vote in which Italy came fourth, but the 4-piece Italian rock band won the public vote by a landslide, scoring a total of 529 points and leaving Switzerland in 3rd place behind France.</p>	-->
+		<script type="text/javascript">
+		function videoUrl(hmmmmm){
+			document.getElementById("slider").src = hmmmmm
+		}
+		</script>
+		
+		<div id="aplayer"></div>
+		<div id="oplayer"></div>
+		<div id="jazzplayer"></div>
+		<div id="hhplayer"></div>
+		<div id="rockplayer"></div>
+
+	<!-- Jquery Link -->
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<!-- Bootstrap Link -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<!-- APlayer Jquery link -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>	
+
+		
+
+		<script>
+		$(".west-coast").on('click', function(e){
+
+	
+			var dataSwitchId = $(this).attr('data-switch');
+			//console.log(dataSwitchId);
+
+			// and now i use aplayer switch function see
+			ap.list.switch(dataSwitchId); //this is static id but i use dynamic 
+
+			// aplayer play function
+			// when i click any song to play
+			ap.play();
+
+			// click to slideUp player see
+			$("#oplayer").show();
+			$("#oplayer").addClass('showPlayer');
+			$("#aplayer").hide();
+			$("#jazzplayer").hide();
+			$("#hhplayer").hide();
+			$("#rockplayer").hide();
+		});
+
+			const ap = new APlayer({
+		    container: document.getElementById('oplayer'),
+		    listFolded: true,
+		    audio: [
+		    {
+		        name: 'Maneskin' ,
+		        artist: 'Torna a casa',
+		        url: 'west-coast/1.mp3',
+		        cover: 'west-coast/1.jpeg.'
+		    },
+			 {
+		        name: 'The Killers' ,
+		        artist: 'Run For Cover',
+		        url: 'west-coast/2.mp3',
+		        cover: 'west-coast/2.jpg.'
+		    },
+			{
+		        name: '24Goldn ft. DaBaby',  // SONG NAME
+		        artist: 'Coco', //ARTIST NAME
+		        url: 'west-coast/3.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/3.png' // COVER IMAGE
+
+		    },
+			{
+				name: 'Shawn Mendes, Justin Bieber',
+				artist: 'Monster',
+				url: 'west-coast/4.mp3',
+				cover: 'west-coast/4.jpg',
+			},
+			{
+				name: 'Alec Bemjamin',
+				artist: 'Oh My God',
+				url: 'west-coast/5.mp3',
+				cover: 'west-coast/5.jpg',
+			},
+				{
+		        name: 'Gjons Tears',  // SONG NAME
+		        artist: 'Tout l_univers', //ARTIST NAME
+		        url: 'west-coast/6.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/6.png' // COVER IMAGE
+		    },
+				 {
+		        name: 'The Vamps' ,
+		        artist: 'Would You',
+		        url: 'west-coast/7.mp3',
+		        cover: 'west-coast/7.jpg.'
+		    },
+			{
+		        name: 'benny blanco, Halsey, Khalid',  // SONG NAME
+		        artist: 'Eastside', //ARTIST NAME
+		        url: 'west-coast/8.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/8.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Gaho',
+				artist: 'Start Over',
+				url: 'west-coast/9.mp3',
+				cover: 'west-coast/9.jpg',
+			},
+			{
+				name: 'The Kid LAROI',
+				artist: 'Without You',
+				url: 'west-coast/10.mp3',
+				cover: 'west-coast/10.jpg',
+			},
+				{
+		        name: 'Jony',  // SONG NAME
+		        artist: 'Комета', //ARTIST NAME
+		        url: 'west-coast/11.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/11.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'Adele' ,
+		        artist: 'Water Under The Bridge',
+		        url: 'west-coast/12.mp3',
+		        cover: 'west-coast/12.jpg.'
+		    },
+			{
+		        name: 'New Hope Club',  // SONG NAME
+		        artist: 'Worse', //ARTIST NAME
+		        url: 'west-coast/13.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/13.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'TIX',
+				artist: 'Fallen Angel',
+				url: 'west-coast/14.mp3',
+				cover: 'west-coast/14.jpg',
+			},
+				
+				 {
+		        name: 'Animal Джаz' ,
+		        artist: 'Чувства',
+		        url: 'west-coast/15.mp3',
+		        cover: 'west-coast/15.jpg.'
+		    },
+			 {
+		        name: 'Maneskin' ,
+		        artist: 'I WANNA BE YOUR SLAVE',
+		        url: 'west-coast/16.mp3',
+		        cover: 'west-coast/16.jpg.'
+		    },
+			{
+		        name: 'Nirvana',  // SONG NAME
+		        artist: 'School', //ARTIST NAME
+		        url: 'west-coast/17.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/17.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Мурат Насыров',
+				artist: 'Мальчик хочет в Тамбов',
+				url: 'west-coast/18.mp3',
+				cover: 'west-coast/18.jpg',
+			},
+			{
+				name: 'The Weeknd',
+				artist: 'Blinding Lights',
+				url: 'west-coast/19.mp3',
+				cover: 'west-coast/19.jpg',
+			},
+				{
+		        name: 'Marshmello x Jonas Brothers',  // SONG NAME
+		        artist: 'Leave Before You Love Me', //ARTIST NAME
+		        url: 'west-coast/20.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/20.png' // COVER IMAGE
+		    },
+				 {
+		        name: 'Charlie Puth ft. Selena Gomez' ,
+		        artist: 'We Dont Talk Anymore',
+		        url: 'west-coast/21.mp3',
+		        cover: 'west-coast/21.jpg.'
+		    },
+			{
+		        name: 'BTS',  // SONG NAME
+		        artist: 'Fake Love', //ARTIST NAME
+		        url: 'west-coast/22.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/22.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'SAINt JHN',
+				artist: 'Roses (Imanbek Remix)',
+				url: 'west-coast/23.mp3',
+				cover: 'west-coast/23.png',
+			},
+			{
+				name: 'John Newman',
+				artist: 'Love Me Again',
+				url: 'west-coast/24.mp3',
+				cover: 'west-coast/24.jpg',
+			},
+				{
+		        name: 'Tom Odell',  // SONG NAME
+		        artist: 'Another Love', //ARTIST NAME
+		        url: 'west-coast/25.mp3', // PATH NAME AND SONG URL
+		        cover: 'west-coast/25.jpg' // COVER IMAGE
+		    },	
+		    ]
+		});
+			
+			</script>
+		
+		<script>
+	
+		$(".hip").on('click', function(e){
+			
+			var dataSwitchId = $(this).attr('data-switch');
+			//console.log(dataSwitchId);
+
+			// and now i use aplayer switch function see
+			ap3.list.switch(dataSwitchId); //this is static id but i use dynamic 
+
+			// aplayer play function
+			// when i click any song to play
+			ap3.play();
+
+			// click to slideUp player see
+			$("#hhplayer").show();
+			$("#hhplayer").addClass('showPlayer');				
+		    $("#oplayer").hide();
+			$("#jazzplayer").hide();
+			$("#aplayer").hide();
+			$("#rockplayer").hide();
+
+		});
+
+			const ap3 = new APlayer({
+		    container: document.getElementById('hhplayer'),
+		    listFolded: true,
+		    audio: [
+		    {
+		        name: '21 savage, Metro Boomin' ,
+		        artist: 'Runnin',
+		        url: 'hiphop/1.mp3',
+		        cover: 'hiphop/1.jpg.'
+		    },
+			{
+		        name: 'Slava Marlow',  // SONG NAME
+		        artist: 'Снова я напиваюсь', //ARTIST NAME
+		        url: 'hiphop/2.mp3', // PATH NAME AND SONG URL
+		        cover: 'hiphop/2.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Slava Marlow',
+				artist: 'Кому это надо?',
+				url: 'hiphop/3.mp3',
+				cover: 'hiphop/3.jpg',
+			},
+			{
+				name: 'Drake, Giveon',
+				artist: 'Chicago Freestyle',
+				url: 'hiphop/4.mp3',
+				cover: 'hiphop/4.png',
+			},
+				{
+		        name: 'Travis Scott',  // SONG NAME
+		        artist: 'Highest in The Room', //ARTIST NAME
+		        url: 'hiphop/5.mp3', // PATH NAME AND SONG URL
+		        cover: 'hiphop/5.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'J. Balvin, Willy William' ,
+		        artist: 'Mi Gente',
+		        url: 'hiphop/6.mp3',
+		        cover: 'hiphop/6.png.'
+		    },
+			{
+		        name: '2Pac',  // SONG NAME
+		        artist: 'Hit em Up', //ARTIST NAME
+		        url: 'hiphop/7.mp3', // PATH NAME AND SONG URL
+		        cover: 'hiphop/7.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: '2Pac',
+				artist: 'Changes',
+				url: 'hiphop/8.mp3',
+				cover: 'hiphop/8.jpg',
+			},
+			{
+				name: '2Pac',
+				artist: 'California Love',
+				url: 'hiphop/9.mp3',
+				cover: 'hiphop/9.jpg',
+			},
+				{
+		        name: 'Dior',  // SONG NAME
+		        artist: 'Положение', //ARTIST NAME
+		        url: 'hiphop/10.mp3', // PATH NAME AND SONG URL
+		        cover: 'hiphop/10.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'Internet Money, Lil Tecca, Lil Mosey' ,
+		        artist: 'Jetski',
+		        url: 'hiphop/11.mp3',
+		        cover: 'hiphop/11.png.'
+		    },
+			{
+		        name: 'Lil Mosey',  // SONG NAME
+		        artist: 'Try me', //ARTIST NAME
+		        url: 'hiphop/12.mp3', // PATH NAME AND SONG URL
+		        cover: 'hiphop/12.png' // COVER IMAGE
+
+		    },
+			{
+				name: 'BTS',
+				artist: 'Black Swan',
+				url: 'hiphop/13.mp3',
+				cover: 'hiphop/13.jpg',
+			},
+			{
+				name: 'Slava Marlow',
+				artist: 'По Глазам',
+				url: 'hiphop/14.mp3',
+				cover: 'hiphop/14.jpg',
+			},
+				{
+		        name: 'Juice WRLD',  // SONG NAME
+		        artist: 'Robbery', //ARTIST NAME
+		        url: 'hiphop/15.mp3', // PATH NAME AND SONG URL
+		        cover: 'hiphop/15.jpg' // COVER IMAGE
+		    },
+
+
+		    ]
+		});
+	</script>
+		
+	<script>
+	
+		$(".rock").on('click', function(e){
+			
+			var dataSwitchId = $(this).attr('data-switch');
+			//console.log(dataSwitchId);
+
+			// and now i use aplayer switch function see
+			ap4.list.switch(dataSwitchId); //this is static id but i use dynamic 
+
+			// aplayer play function
+			// when i click any song to play
+			ap4.play();
+
+			// click to slideUp player see
+			$("#rockplayer").show();
+			$("#rockplayer").addClass('showPlayer');				
+			$("#oplayer").hide();
+			$("#jazzplayer").hide();
+			$("#aplayer").hide();
+			$("#hhplayer").hide();
+
+		});
+
+			const ap4 = new APlayer({
+		    container: document.getElementById('rockplayer'),
+		    listFolded: true,
+		    audio: [
+		    {
+		        name: 'Panic!At The Disco' ,
+		        artist: 'I Write Sins Not Tradegies',
+		        url: 'rock/1.mp3',
+		        cover: 'rock/1.png.'
+		    },
+			{
+		        name: 'The Cranberries',  // SONG NAME
+		        artist: 'Zombie', //ARTIST NAME
+		        url: 'rock/2.mp3', // PATH NAME AND SONG URL
+		        cover: 'rock/2.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Aerosmith',
+				artist: 'Dream On',
+				url: 'rock/3.mp3',
+				cover: 'rock/3.jpg',
+			},
+			{
+				name: 'Oasis',
+				artist: 'Wonderwall',
+				url: 'rock/4.mp3',
+				cover: 'rock/4.jpg',
+			},
+				{
+		        name: 'David Bowie',  // SONG NAME
+		        artist: 'Rebel, Rebel', //ARTIST NAME
+		        url: 'rock/5.mp3', // PATH NAME AND SONG URL
+		        cover: 'rock/5.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'Scorpions' ,
+		        artist: 'Stil Loving You',
+		        url: 'rock/6.mp3',
+		        cover: 'rock/6.jpg.'
+		    },
+			{
+		        name: 'Journey',  // SONG NAME
+		        artist: 'Dont Stop Believin', //ARTIST NAME
+		        url: 'rock/7.mp3', // PATH NAME AND SONG URL
+		        cover: 'rock/7.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Ozzy Osbourne',
+				artist: 'Crazy Train',
+				url: 'rock/8.mp3',
+				cover: 'rock/8.jpg',
+			},
+			{
+				name: 'Europe',
+				artist: 'The Final Countdown',
+				url: 'rock/9.mp3',
+				cover: 'rock/9.jpg',
+			},
+				{
+		        name: 'Toto',  // SONG NAME
+		        artist: 'Africa', //ARTIST NAME
+		        url: 'rock/10.mp3', // PATH NAME AND SONG URL
+		        cover: 'rock/10.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'Green Day' ,
+		        artist: '21 Guns',
+		        url: 'rock/11.mp3',
+		        cover: 'rock/11.jpg.'
+		    },
+			{
+		        name: 'Nickelback',  // SONG NAME
+		        artist: 'When We Stand Together', //ARTIST NAME
+		        url: 'rock/12.mp3', // PATH NAME AND SONG URL
+		        cover: 'rock/12.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Kansas',
+				artist: 'Carry On Wayward Son',
+				url: 'rock/13.mp3',
+				cover: 'rock/13.jpg',
+			},
+			{
+				name: 'Santana',
+				artist: 'She is Not There',
+				url: 'rock/14.mp3',
+				cover: 'rock/14.jpg',
+			},
+				{
+		        name: 'Spirit',  // SONG NAME
+		        artist: 'Mr. Skin', //ARTIST NAME
+		        url: 'rock/15.mp3', // PATH NAME AND SONG URL
+		        cover: 'rock/15.jpg' // COVER IMAGE
+		    },
+
+
+		    ]
+		});
+	</script>	
+	<script>
+	
+	$(".release").on('click', function(e){
+			
+			var dataSwitchId = $(this).attr('data-switch');
+			//console.log(dataSwitchId);
+
+			// and now i use aplayer switch function see
+			ap1.list.switch(dataSwitchId); //this is static id but i use dynamic 
+
+			// aplayer play function
+			// when i click any song to play
+			ap1.play();
+
+			// click to slideUp player see
+		$("#aplayer").show();
+		$("#aplayer").addClass('showPlayer');				
+		$("#oplayer").hide();
+		$("#jazzplayer").hide();
+		$("#hhplayer").hide();
+		$("#rockplayer").hide();
+		});
+
+			const ap1 = new APlayer({
+		    container: document.getElementById('aplayer'),
+		    listFolded: true,
+		    audio: [
+		    {
+		        name: 'J-Cole' ,
+		        artist: 'a m a r i',
+		        url: 'source/amari.mp3',
+		        cover: 'img/jcole.jpeg.'
+		    },
+			{
+		        name: 'Maneskin',  // SONG NAME
+		        artist: 'Zitti E Buoni', //ARTIST NAME
+		        url: 'source/italy.mp3', // PATH NAME AND SONG URL
+		        cover: 'img/ital.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'BTS',
+				artist: 'Butter',
+				url: 'source/butter.mp3',
+				cover: 'img/bts.jpg',
+			},
+			{
+				name: 'Olivia Rodrigo',
+				artist: 'good 4 u',
+				url: 'source/good4u.mp3',
+				cover: 'img/olivia.jpg',
+			},
+				{
+		        name: '21 savage',  // SONG NAME
+		        artist: 'Spiral', //ARTIST NAME
+		        url: 'source/spiral.mp3', // PATH NAME AND SONG URL
+		        cover: 'img/21savage.png' // COVER IMAGE
+		    },
+				 {
+		        name: 'NF' ,
+		        artist: 'LOST',
+		        url: 'source/lost.mp3',
+		        cover: 'img/nf.jpg.'
+		    },
+			{
+		        name: 'Lana Del Rey',  // SONG NAME
+		        artist: 'Chemtrails Over The Country Club', //ARTIST NAME
+		        url: 'source/lana.mp3', // PATH NAME AND SONG URL
+		        cover: 'img/lana.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Rocket',
+				artist: 'Paranoia',
+				url: 'source/paranoia.mp3',
+				cover: 'img/rocket.jpg',
+			},
+			{
+				name: 'Jackson Wang',
+				artist: 'Pretty Please',
+				url: 'source/prettyplease.mp3',
+				cover: 'img/jackson.jpg',
+			},
+				{
+		        name: 'KSI',  // SONG NAME
+		        artist: 'Patience', //ARTIST NAME
+		        url: 'source/patience.mp3', // PATH NAME AND SONG URL
+		        cover: 'img/ksi.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'Twenty One Pilots' ,
+		        artist: 'Shy Away',
+		        url: 'source/shyaway.mp3',
+		        cover: 'img/21.jpg.'
+		    },
+			{
+		        name: 'Lil Nas X',  // SONG NAME
+		        artist: 'Montero', //ARTIST NAME
+		        url: 'source/montero.mp3', // PATH NAME AND SONG URL
+		        cover: 'img/lilnas.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Galantis, David Guetta',
+				artist: 'Heartbreak Anthem',
+				url: 'source/galantis.mp3',
+				cover: 'img/g.jpg',
+			},
+			{
+				name: 'Vance Joy',
+				artist: 'Missing Piece',
+				url: 'source/missingpiece.mp3',
+				cover: 'img/joy.jpg',
+			},
+				{
+		        name: 'Billie Eilish',  // SONG NAME
+		        artist: 'Your Power', //ARTIST NAME
+		        url: 'source/yourpower.mp3', // PATH NAME AND SONG URL
+		        cover: 'img/bil.png' // COVER IMAGE
+		    },
+
+
+		    ]
+		});
+	</script>
+		
+	<script>
+	
+	$(".jazz").on('click', function(e){
+			
+			var dataSwitchId = $(this).attr('data-switch');
+			//console.log(dataSwitchId);
+
+			// and now i use aplayer switch function see
+			ap2.list.switch(dataSwitchId); //this is static id but i use dynamic 
+
+			// aplayer play function
+			// when i click any song to play
+			ap2.play();
+
+			// click to slideUp player see
+			$("#jazzplayer").show();
+			$("#jazzplayer").addClass('showPlayer');				
+			$("#oplayer").hide();
+			$("#aplayer").hide();
+			$("#hhplayer").hide();
+			$("#rockplayer").hide();
+		
+		});
+
+			const ap2 = new APlayer({
+		    container: document.getElementById('jazzplayer'),
+		    listFolded: true,
+		    audio: [
+		    {
+		        name: 'Paul Desmond' ,
+		        artist: 'A Tase of Honey',
+		        url: 'jazz/1.mp3',
+		        cover: 'jazz/1.jpg.'
+		    },
+			{
+		        name: 'Sonny Rollins',  // SONG NAME
+		        artist: 'Silk_n_Satin', //ARTIST NAME
+				url: 'jazz/2.mp3',
+		        cover: 'jazz/2.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Gerry Muligan',
+				artist: 'Chelsea Bridge',
+				url: 'jazz/3.mp3',
+				cover: 'jazz/3.jpg',
+			},
+			{
+				name: 'Ben Webster',
+				artist: 'My Funny Valentine',
+				url: 'jazz/4.mp3',
+				cover: 'jazz/4.jpg',
+			},
+				{
+		        name: 'John Cotrane',  // SONG NAME
+		        artist: 'Like Someone In Love', //ARTIST NAME
+		        url: 'jazz/5.mp3', // PATH NAME AND SONG URL
+		        cover: 'jazz/5.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'Chet Baker' ,
+		        artist: 'Alone Together',
+		        url: 'jazz/6.mp3',
+		        cover: 'jazz/6.jpg.'
+		    },
+			{
+		        name: 'Wes Montgomery',  // SONG NAME
+		        artist: 'In Your Own Sweet Way', //ARTIST NAME
+		        url: 'jazz/7.mp3', // PATH NAME AND SONG URL
+		        cover: 'jazz/7.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Bill Evans',
+				artist: 'When I Fall in Love',
+				url: 'jazz/8.mp3',
+				cover: 'jazz/8.jpg',
+			},
+			{
+				name: 'Charlie Parker',
+				artist: 'Everything Happens To Me',
+				url: 'jazz/9.mp3',
+				cover: 'jazz/9.jpg',
+			},
+				{
+		        name: 'Scott Hamilton',  // SONG NAME
+		        artist: 'Good Morning Heartache', //ARTIST NAME
+		        url: 'jazz/10.mp3', // PATH NAME AND SONG URL
+		        cover: 'jazz/10.jpg' // COVER IMAGE
+		    },
+				 {
+		        name: 'Barney Kesse' ,
+		        artist: 'Im Thru with Love',
+		        url: 'jazz/11.mp3',
+		        cover: 'jazz/11.jpg.'
+		    },
+			{
+		        name: 'John Coltrane',  // SONG NAME
+		        artist: 'In A Sentimental Mood', //ARTIST NAME
+		        url: 'jazz/12.mp3', // PATH NAME AND SONG URL
+		        cover: 'jazz/12.jpg' // COVER IMAGE
+
+		    },
+			{
+				name: 'Stan Getz, The Oscar Peterson Trio',
+				artist: 'Detour Ahead',
+				url: 'jazz/13.mp3',
+				cover: 'jazz/13.jpg',
+			},
+			
+
+		    ]
+		});
+	</script>
+	
+		
+		
+		
+		
+		
+		
+		
+        <script src="https://kit.fontawesome.com/b2ab59492c.js" crossorigin="anonymous"></script>
+
+
+        <div class="footer"> 
+            <div class="footer-item">
+                <div class="footer-child" id="about">
+                    <div class="footer-logo"> 
+                    <p>"One good thing about music, when it hits you, you feel no pain."</p>
+					<p>- Bob Marley  <a><img src="img/dababy.png" alt=""></a></p>
+						 </div>	         
+                </div>
+        
+             
+                <div class="footer-child" id="address">
+                    <h3>Адрес</h3> 
+                    <ul class="ul">
+                        <li>Расположение: г. Минск, ул. Есенина 14а</li>
+						<li>Телефон: <a href="tel:+375296805728"> +37529 680-57-28</a></li>
+                        <li>E-mail: <a href="mailto:gleb.batyan@gmail.com"> gleb.batyan@gmail.com</a></li>
+                    </ul>   
+					 <div class="social">
+                        <a href="https://www.facebook.com/profile.php?id=100013197217916"><i class="fab fa-facebook-f"></i>
+
+
+
+</a>
+                        <a href="https://www.twitter.com/login"><i class="fab fa-git"></i>
+
+</a>
+                        <a href="https://accounts.google.com/ServiceLogin"><i class="fa fa-google" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/batlayy/?hl=ru"><i class="fab fa-instagram"></i>
+
+</a>
+                        <a href="https://vk.com/glebati_13"><i class="fab fa-vk"></i>
+
+</a>
+                    </div>
+                </div>     
+                <div class="footer-child" id="contact">
+                    <h3>Офис на карте:</h3>
+					<div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1975.9638684204497!2d27.595704474264846!3d53.916991564641165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcfa7bec46317%3A0x3efd8e8ffb993d!2z0JHQtdC70L7RgNGD0YHRgdC60LjQuSDQs9C-0YHRg9C00LDRgNGB0YLQstC10L3QvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgiDQuNC90YTQvtGA0LzQsNGC0LjQutC4INC4INGA0LDQtNC40L7RjdC70LXQutGC0YDQvtC90LjQutC4!5e0!3m2!1sru!2sby!4v1621902263509!5m2!1sru!2sby" width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>         </div>
+                </div>
+            </div>
+                <div class="copyright">
+                    <p> &copy; Copyright 2020 Gleb Music Org. | All Rights Reserved </p>
+                </div>
+        </div> 
+			<div id="finish"></div>
+	</div>	
+	</div>
+</body>
+</html>
+
+
+

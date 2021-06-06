@@ -171,21 +171,6 @@ position: relative;
 	flex-basis: 50%;
 }
 
-.card{
-	width: 280px;
-	height: 150px;
-	display: inline-block;
-	border-radius: 100px;
-	box-sizing: border-box;
-	box-shadow: 0 15px 35px #3d2173a1;
-	cursor: pointer;
-	margin: 0px 15px;
-	background-position: center;
-	background-size: cover;
-	transition: all ease 0.4s;
-	overflow: hidden;
-	padding: 10px 0px;;
-}
 .ccard{
 	position: relative;
 	left: 3%;
@@ -205,20 +190,12 @@ position: relative;
 
 
 
-
-.card:hover{
-	transform: scale(0.98) translateY(5px);
-	box-shadow: none;
-}
-
 .ccard:hover{
 	transform: scale(0.98) translateY(5px);
 	box-shadow: none;
 }
 
-.card h5:hover{
-	opacity: 10;
-}
+
 
 .ccard h5:hover{
 	opacity: 10;
@@ -252,12 +229,6 @@ position: relative;
 	text-shadow: 0 15px0 0 15px #000;
 }
 
-
-.card p{
-	color: #fff;
-	text-shadow: 0 0 15px #000;
-	font-size: 8px;
-}
 .ccard p{
 	color: #fff;
 	text-shadow: 0 0 15px #000;
@@ -272,8 +243,6 @@ position: relative;
 	top: calc(50% -0);
 	
 }
-
-
 
 .header
 {
@@ -360,24 +329,7 @@ position: relative;
     color: cyan;
     text-transform: uppercase;
 }
-.explore-btn a
-{
-    display: inline-block;
-    margin-top: 30px;
-    color: black;
-    background-color: palegreen;
-    border: 2px solid palegreen;
-    text-decoration: none;
-    border-radius: 100px;
-    padding: 10px 40px;
-    font-weight: bold;
-    transition: all 0.5s ease;
-}
-.explore-btn a:hover
-{
-    color: palegreen;
-    background-color: transparent;
-}
+
 .mob-btn
 {
     display: none;
@@ -538,8 +490,6 @@ padding-top: 400px;
 background-color:rgba(0, 0, 0, 0.5);
 }
 
-
-
 /* Top Upcoming */
 .s1
 {
@@ -576,39 +526,6 @@ padding-top: 75px;
     justify-content: center;
     align-items: left;
 }
-
-
-
-
-
-.movie-list-item-title {
-  background-color: #333;
-  padding: 0 10px;
-  font-size: 32px;
-  font-weight: bold;
-  position: absolute;
-  top: 10%;
-  left: 50px;
-  opacity: 10;
-  transition: 1s all ease-in-out;
-}
-
-.movie-list-item-desc {
-  background-color: #333;
-  padding: 10px;
-  font-size: 14px;
-  position: absolute;
-  top: 30%;
-  left: 50px;
-  width: 230px;
-  opacity: 10;
-  transition: 1s all ease-in-out;
-}
-.movie-list-item {
-  margin-right: 30px;
-  position: relative;
-}
-
 
 .featured-content {
   height: 50vh;
